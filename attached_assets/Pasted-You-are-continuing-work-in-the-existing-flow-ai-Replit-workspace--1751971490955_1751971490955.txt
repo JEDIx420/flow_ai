@@ -1,0 +1,77 @@
+You are continuing work in the existing “flow-ai” Replit workspace.
+
+────────────────────────────────────────
+## GOAL
+Navbar should show only:
+  • Brand name (Flow AI)
+  • Dark-mode toggle (Sun / Moon icon)
+  • “Join Wait-list” button
+
+Everything else (Pricing, Demo, Contact, Settings page toggle) must be removed.
+
+─────────────────────────
+### 1 · Remove Settings view toggle
+*Files:* `src/pages/Settings.tsx` (or similar), routes, and any context.
+1. Delete the dark-mode toggle component inside Settings **or** comment it out.
+2. If Settings page exists only for that toggle, delete the route import & menu link entirely.
+
+### 2 · Add dark-mode toggle into Navbar
+*File:* `src/components/Navbar.tsx`
+1. Import icons & `useTheme`:
+   ```tsx
+   import { Sun, Moon } from "lucide-react";
+   import { useTheme } from "next-themes";
+Inside the right-side button group place:
+
+tsx
+Copy
+Edit
+const { theme, setTheme } = useTheme();
+<ButtonGlass
+  aria-label="Toggle theme"
+  onClick={() => setTheme(theme === "light" ? "dark" : "light")}
+>
+  {theme === "light" ? <Moon size={18}/> : <Sun size={18}/>}
+</ButtonGlass>
+Make sure this group also contains one ButtonGlass styled bg-brand text-white that opens the wait-list modal:
+
+tsx
+Copy
+Edit
+<ButtonGlass onClick={() => setOpen(true)} className="bg-brand text-white">
+  Join Wait-list
+</ButtonGlass>
+3 · Remove extra nav links and hero CTAs
+In Navbar.tsx delete or comment out items like “Features”, “Pricing”, “About”, “Contact”.
+
+In src/components/Hero.tsx replace any secondary buttons with a single:
+
+tsx
+Copy
+Edit
+<ButtonGlass onClick={() => setOpen(true)} className="mt-8 bg-brand text-white">
+  Join Wait-list
+</ButtonGlass>
+4 · Verify modal wiring
+Files: src/components/WaitlistModal.tsx, Navbar.tsx, possibly context.
+
+Ensure setOpen state is lifted if needed so both hero and navbar buttons open the same modal.
+
+Test submitting an email still writes to the waitlist table.
+
+5 · Commit all changes
+bash
+Copy
+Edit
+git add .
+git commit -m "feat(navbar): join-wait-list + dark-mode toggle"
+─────────────────────────
+
+DEFINITION OF DONE
+Navbar now shows: Flow AI logo · Sun/Moon toggle · Join Wait-list (nothing else).
+
+Dark-mode toggle works instantly (no page refresh) and persists.
+
+Join Wait-list button (in navbar and hero) opens modal; email inserts into Postgres.
+
+No Settings toggle duplication; no Pricing/Demo/Contact links.

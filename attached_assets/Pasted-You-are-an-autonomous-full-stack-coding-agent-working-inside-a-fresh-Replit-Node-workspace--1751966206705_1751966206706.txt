@@ -1,0 +1,124 @@
+You are an autonomous full-stack coding agent working inside a fresh Replit Node workspace.
+
+────────────────────────────────────────
+## MISSION
+Bootstrap the Flow AI landing-page repo with:
+• Next.js 15 (App Router, TypeScript)
+• Tailwind v4 + glasscn-ui preset
+• React 19 RC
+• Dev-ready scripts for the Replit run button
+Everything must be installed via **npm** (Replit default).  
+Record each logical step in git and finish with one commit:
+  chore(init): Next 15 + Tailwind base
+────────────────────────────────────────
+## STEP-BY-STEP TASK LIST
+1. **Ensure Node 18+ is active**  
+   ```bash
+   node -v
+(If < 18, run npm i -g n && n 18 and reload shell.)
+
+Scaffold app
+
+bash
+Copy
+Edit
+npx create-next-app@latest flow-ai \
+  --ts --tailwind --app --eslint --src-dir \
+  --import-alias "@/src/*" --no-interactive
+cd flow-ai
+Install UI & animation libs
+
+bash
+Copy
+Edit
+npm i glasscn-ui framer-motion lucide-react next-themes tailwindcss-animate @headlessui/react
+Tailwind preset
+overwrite tailwind.config.ts with:
+
+ts
+Copy
+Edit
+import { glass } from "glasscn-ui/preset";
+
+export default {
+  presets: [glass()],
+  content: ["./src/**/*.{ts,tsx,mdx}"],
+  theme: {
+    extend: {
+      colors: {
+        brand: {
+          light:  "#D0E4FF",
+          DEFAULT:"#1E6FFF",
+          dark:   "#0B1B3B"
+        }
+      }
+    }
+  },
+  plugins: [require("tailwindcss-animate")]
+};
+Global styles & font
+edit src/styles/globals.css:
+
+css
+Copy
+Edit
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap');
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+html { font-family: Inter, system-ui, sans-serif; }
+Basic layout & navbar stubs
+
+create src/components/Navbar.tsx (empty stub for now).
+
+update src/app/layout.tsx:
+
+tsx
+Copy
+Edit
+import "@/styles/globals.css";
+import { ThemeProvider } from "next-themes";
+import Navbar from "@/components/Navbar";
+
+export const metadata = { title: "Flow AI – Your AI Sales Co-Pilot" };
+
+export default function RootLayout({ children }: { children: React.ReactNode }) {
+  return (
+    <html lang="en" suppressHydrationWarning>
+      <body className="min-h-screen bg-gradient-to-br from-white via-brand-light to-white
+                       dark:from-[#0e0e11] dark:via-[#141416] dark:to-[#0e0e11]">
+        <ThemeProvider attribute="class" enableSystem>
+          <Navbar />
+          {children}
+        </ThemeProvider>
+      </body>
+    </html>
+  );
+}
+Replit run config
+write .replit:
+
+ini
+Copy
+Edit
+run = "npm run dev -- --port $PORT"
+Git init & commit
+
+bash
+Copy
+Edit
+git init
+git add .
+git commit -m "chore(init): Next 15 + Tailwind base"
+────────────────────────────────────────
+
+SUCCESS CRITERIA
+npm run dev (or Replit run button) starts Next.js on assigned port with no errors.
+
+http://localhost:<port> shows blank page with no 404 and Tailwind styles loaded.
+
+Git log shows single commit: “chore(init): Next 15 + Tailwind base”.
+
+When all steps pass, reply exactly:
+Landing Skeleton Complete

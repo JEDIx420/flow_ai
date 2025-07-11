@@ -1,0 +1,100 @@
+## MISSION
+Bootstrap the Flow AI landing-page repo with:
+• React 18 + Vite (TypeScript)
+• Tailwind CSS v4 + glasscn-ui preset
+• Framer Motion, Lucide icons, next-themes for dark mode
+• Ready to run with the Replit ▶️ button
+
+Finish with ONE git commit:
+  chore(init): Vite + Tailwind base
+Then reply exactly: Landing Skeleton Complete
+────────────────────────────────────────
+## STEP-BY-STEP TASK LIST
+1. **Create Vite app**
+   ```bash
+   npm create vite@latest flow-ai -- --template react-ts
+   cd flow-ai
+Install UI & animation libs
+
+bash
+Copy
+Edit
+npm i tailwindcss@latest postcss autoprefixer
+npx tailwindcss init -p
+npm i glasscn-ui framer-motion lucide-react react-helmet-async next-themes tailwindcss-animate @headlessui/react
+Tailwind & glass preset
+Overwrite tailwind.config.js with:
+
+js
+Copy
+Edit
+import { glass } from "glasscn-ui/preset"
+
+export default {
+  presets: [glass()],
+  content: ["./src/**/*.{js,ts,jsx,tsx}"],
+  theme: {
+    extend: {
+      colors: {
+        brand: {
+          light:  "#D0E4FF",
+          DEFAULT:"#1E6FFF",
+          dark:   "#0B1B3B"
+        }
+      }
+    }
+  },
+  plugins: [require("tailwindcss-animate")]
+}
+Global styles & font
+Replace src/index.css with:
+
+css
+Copy
+Edit
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap');
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+html { font-family: Inter, system-ui, sans-serif; }
+Setup dark-mode provider
+In src/main.tsx wrap <App />:
+
+tsx
+Copy
+Edit
+import { ThemeProvider } from "next-themes";
+// ...
+<ThemeProvider attribute="class" defaultTheme="light">
+  <App />
+</ThemeProvider>
+Stub Navbar component
+Create src/components/Navbar.tsx with placeholder div (we’ll flesh out later).
+
+Replit run config
+Add .replit at repo root:
+
+ini
+Copy
+Edit
+run = "npm run dev -- --port $PORT"
+Git init & commit
+
+bash
+Copy
+Edit
+git init
+git add .
+git commit -m "chore(init): Vite + Tailwind base"
+────────────────────────────────────────
+
+SUCCESS CRITERIA
+npm run dev (Replit ▶️) starts Vite dev server on $PORT with no errors.
+
+Visiting the preview URL shows the default Vite React page (blank ok) with Tailwind styles applied.
+
+git log -1 shows commit message: “chore(init): Vite + Tailwind base”.
+
+When all steps are green, reply exactly:
+Landing Skeleton Complete
