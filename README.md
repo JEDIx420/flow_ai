@@ -1,7 +1,7 @@
 # Flow AI
 
 <p align="center">
-  <img src="attached_assets/screenshot-hero.png" alt="Flow AI Hero Section" width="80%"/>
+  <img src="./attached_assets/screenshot-hero.png" alt="Flow AI Hero Section Screenshot" width="80%"/>
 </p>
 
 <p align="center"><b>Transform your sales process with intelligent automation.</b></p>
@@ -24,7 +24,7 @@ Our mission is to make every sales rep 10x more productive, and every customer i
 ## Platform Preview
 
 <p align="center">
-  <img src="attached_assets/screenshot-dashboard.png" alt="Flow AI Dashboard Preview" width="80%"/>
+  <img src="./attached_assets/screenshot-dashboard.png" alt="Flow AI Dashboard Preview Screenshot" width="80%"/>
 </p>
 
 <p align="center"><i>Sample dashboard showing pipeline, leads, and conversion analytics.</i></p>
@@ -34,7 +34,7 @@ Our mission is to make every sales rep 10x more productive, and every customer i
 ## Features
 
 <p align="center">
-  <img src="attached_assets/screenshot-features.png" alt="Flow AI Features" width="80%"/>
+  <img src="./attached_assets/screenshot-features.png" alt="Flow AI Features Screenshot" width="80%"/>
 </p>
 
 - **Smart Lead Scoring:** AI analyzes prospect behavior and engagement to prioritize your hottest leads automatically.
